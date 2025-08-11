@@ -1,4 +1,4 @@
-name: Frontend CI
+ name: Frontend CI
 
 on:
   push:
@@ -19,11 +19,12 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install frontend dependencies
         run: |
-        
-          npm install
+          cd fitness-tracker-client
+          npm ci
 
-      - name: Run tests
+      - name: Run frontend tests
         run: |
+          cd fitness-tracker-client
           npm test -- --ci --watchAll=false
