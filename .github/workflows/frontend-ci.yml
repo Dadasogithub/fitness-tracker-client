@@ -18,13 +18,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
+          cache-dependency-path: fitness-tracker-client/package-lock.json
 
       - name: Install frontend dependencies
-        run: |
-          cd fitness-tracker-client
-          npm ci
+        working-directory: fitness-tracker-client
+        run: npm install
 
       - name: Run frontend tests
-        run: |
-          cd fitness-tracker-client
-          npm test -- --ci --watchAll=false
+        working-directory: fitness-tracker-client
+        run: npm test -- --ci --watchAll=false
