@@ -12,16 +12,19 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd fitness-tracker-client
+          npm install
 
       - name: Run tests
-        run: npm test -- --watchAll=false
+        run: |
+          cd fitness-tracker-client
+          npm test -- --watchAll=false
