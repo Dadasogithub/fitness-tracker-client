@@ -19,14 +19,10 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: |
-            fitness-tracker-client/package-lock.json
-            package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: fitness-tracker-client
         run: npm ci
 
       - name: Run tests
-        working-directory: fitness-tracker-client
         run: npm test -- --ci --watchAll=false
