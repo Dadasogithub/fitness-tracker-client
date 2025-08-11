@@ -10,6 +10,10 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: fitness-tracker-client  # 👈 run all commands inside this folder
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,6 +23,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
+          cache-dependency-path: fitness-tracker-client/package-lock.json
 
       - name: Install dependencies
         run: npm install
